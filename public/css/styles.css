@@ -1,0 +1,145 @@
+
+.navbar{
+    padding-top: 15px;
+    border: 0;
+    border-radius: 0;
+    font-size: 12px;
+    background-color: #ff5353;
+}
+
+#Navbar ul li{
+    margin-left: 10px;
+}
+
+#Navbar ul li:hover{
+    background-color: #ff3b3b;
+}
+
+.container{
+    margin-top: 4%;
+}
+
+.row-header{
+    margin-top: 0%;
+    color: #424242;
+}
+
+.row-content{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    color: #424242;
+    border-bottom: 1px ridge;
+}
+
+.jumbotron{
+    margin-top: 3%;
+    background: linear-gradient(to bottom right, #979797, #616264, #cbcbcc );
+    color: red;
+}
+
+.container{
+    margin-top: 5%;
+}
+
+.footer{
+    background: linear-gradient(to bottom right, #e44a36,  #b42b19);
+    margin-top: 2%;
+    color: #ffffff;
+}
+
+.footer .container{
+    padding: 2%;
+}
+
+
+
+
+footer a{
+    color: #ffffff;
+}
+
+
+
+.card{
+    margin-right: 4%;
+    margin-bottom: 3%;
+    padding: 0%;
+    background-color: #ff5353;
+    color: white;
+}
+
+.homeCard{
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-bottom: 3%;
+    background-color: #ff5353;
+    color: white;
+}
+
+.homeCard .card-header{
+    margin: 0;
+}
+
+
+.homeCard :hover{
+    cursor: pointer;
+    background-color: #ff3b3b;
+}
+
+.card-body{
+    background-color: #fa7c7c;
+}
+
+#posts{
+    background-color: #ffffff;
+    border: solid #ff5353;
+    color: floralwhite;
+    margin-top: 50px;
+    margin-bottom: 0%;
+}
+
+#posts .card-header{
+    background-color: #ff5353;
+}
+
+#posts .card-body{
+    margin: 1%;
+    background-color: #ffffff;
+    color: #ff3b3b;
+}
+
+
+
+.form-check-inline label{
+    margin-right: 10px;
+}
+
+#Navbar{
+    margin-left: 3%;
+    margin-right: 3%;
+
+}
+
+.form-control{
+    margin-right: 5px;
+}
+
+#comments{
+    background-color: #ffffff;
+    border: 0;
+}
+
+#comments .comments{
+    margin: 0%;
+}
+
+#comments .subComments{
+
+    margin: 0% 0% 0% 5% ;
+    background-color: #686666;
+}
+
+#comments .subComments .card-body{
+    background-color: #686666;
+}

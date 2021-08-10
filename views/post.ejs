@@ -1,0 +1,84 @@
+<%- include("partials/header") -%>
+<div class="container">
+    <div class="row row-header">
+        <div class="col-12 col-md-12">
+            <div class="card" id="posts">
+                <div class="card-header">
+                    <h2 class="card-title"> <%= title %> </h2>
+                    <div class="row">
+                        <h5 class="col-12 col-md-5"> By - <%= fname %><%= lname %></h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p><%= content %></p>
+                </div>
+            </div>
+            <div class="card" id="comments">
+                <div class="card-header bg-dark">
+                    <h4 class="card-title">COMMENTS</h4>
+                </div>
+                <div class="card-body">
+                    <%if (!locals.session.loggedin) { %>
+                        <div class="row">
+                            <h4 class="col-md-6">Please log in to post comments</h4>
+                            <a class="btn btn-warning col-md-2" href="/login" role="button">Login</a>
+                            <a class="btn btn-warning offset-md-1 col-md-2" href="/register" role="button" id="reg">Register</a>    
+                        </div>
+                    <% }else{ %>
+                        <form action="/posts/<%= postID %>/comments" method="POST">
+                            <div class="form-group">
+                                <textarea type="text" class="form-control" name="content" placeholder="add your comments here" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark" name="submit" id="submit" value="false">Done</button>
+                        </form>          
+                    <%}%>    
+                </div>
+                <% commentList.forEach(function(comments){ %>
+                    <%if (comments.subComment == "false") { %>
+                    <div class="singleComment">
+                        <div class="card comments">
+                            <div class="card-body">
+                                <p> <%= comments.content %></p>
+                                <h6> By- <%= comments.userID.firstName %></h6>
+                                <div class="row">
+                                    <% if(comments.childCommentID.length > 0){ %>
+                                        <button type="button" class="btn btn-block btn-light offset-md-1 col-md-2 viewReply">VIEW REPLIES</button>
+                                    <% } %>
+                                    <%if (!locals.session.loggedin) { %>
+                                        <button type="button" class="btn btn-block btn-dark offset-md-1 col-md-2 noReply">REPLY</button>
+                                    <% }else{ %>
+                                            
+                                        <button type="button" class="btn btn-block btn-dark offset-md-1 col-md-2 reply" value="<%=comments._id%>">REPLY</button>
+                                        <input type="hidden" class="commentID" value="<%=comments._id%>">
+                                </div>
+                                <div class="row-header" style="color: white; margin-top: 2%;">
+                                        <form action="/posts/<%= postID %>/comments" method="POST" class="hidden">
+                                            <div class="form-group">
+                                                <label for="content" class="col-md-3"><span><h4>REPLY</h4></span></label>
+                                                <textarea type="text" class="form-control col-md" name="content" placeholder="add your comments here" required></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-dark" name="submit" value="<%=comments._id%>">Done</button>
+                                        </form>
+                                    <%}%>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <% comments.childCommentID.forEach(function(childComments){ %>
+                            <div class="card subComments hidden">
+                                <div class="card-body"">
+                                    <p> <%= childComments.content %></p>
+                                    <h6> By- <%= childComments.userID.firstName %></h6>
+                                </div>
+                            </div>    
+                        <% }) %>
+                    </div>
+                    <%}%> 
+                <% }) %>
+            </div>
+
+        </div>
+    </div>
+</div>
+<%- include("partials/footerPost") -%>

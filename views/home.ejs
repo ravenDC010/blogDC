@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+
+
+<div class="container">
+    <div class="row row-header">
+        <h4>POSTS</h4>
+    </div>
+    <div class="row row-content">
+            <% newPosts.forEach(function(post){ %>
+                    <div class="card homeCard col-md-12">
+                        <div class="card-header row">
+                            <h5 class="card-title col-md-9"><%= post.title %></h5>
+                            <h5 class="col-md-3">By - <%= post.userID.firstName %></h5>
+                            <input type="hidden" value="<%=post._id%>">
+                        </div>
+                    </div>
+            <% }) %>
+    </div>
+</div>
+<%- include('partials/footerHome') %>

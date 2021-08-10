@@ -1,0 +1,76 @@
+<%- include("partials/header") -%>
+<div class="container">
+    <div class="row row-header">
+        <div class="col-12 col-md-12">
+            <div class="card" id="posts">
+                <div class="card-header">
+                    <h2 class="card-title"> <%= title %> </h2>
+                    <div class="row">
+                        <h5 class="col-12 col-md-5"> By - <%= fname %><%= lname %></h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p><%= content %></p>
+                </div>
+            </div>
+            <div class="card bg-warning" id="comments">
+                <div class="card-header bg-dark">
+                    <h4 class="card-title">COMMENTS</h4>
+                </div>
+                <div class="card-body">
+                    <%if (!locals.session.loggedin) { %>
+                        <div class="row">
+                            <h4 class="col-md-6">Please log in to post comments</h4>
+                            <a class="btn btn-warning col-md-2" href="/login" role="button">Login</a>
+                            <a class="btn btn-warning offset-md-1 col-md-2" href="/register" role="button" id="reg">Register</a>    
+                        </div>
+                    <% }else{ %>
+                        <form action="/posts/<%= postID %>/comments" method="POST">
+                            <div class="form-group">
+                                <textarea type="text" class="form-control" name="content" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark" name="submit" id="submit" value="false">Done</button>
+                        </form>          
+                    <%}%>    
+                </div>
+                <% commentList.forEach(function(comments){ %>
+                    <%if (comments.subComment == "false") { %>
+                        <div class="card comments">
+                            <div class="card-body">
+                                <h6> By- <%= comments.userID.firstName %></h6>
+                                <p> <%= comments.content %></p>
+                                <%if (!locals.session.loggedin) { %>
+                                    <h4>Please log in to post comments</h4>
+                                <% }else{ %>
+                                        
+                                    <button type="button" class="btn btn-block btn-success reply" value="<%=comments._id%>">Reply</button>
+                                    <input type="hidden" class="commentID" value="<%=comments._id%>">
+                                        
+                                    <form action="/posts/<%= postID %>/comments" method="POST" class="hidden">
+                                        <div class="form-group">
+                                            <label for="content"><span><h4>REPLY</h4></span></label>
+                                            <textarea type="text" class="form-control" name="content" required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-light" name="submit" value="<%=comments._id%>">Done</button>
+                                    </form>
+                                <%}%>
+                            </div>  
+                        </div>
+
+                        <% comments.childCommentID.forEach(function(childComments){ %>
+                            <div class="card subComments" >
+                                <div class="card-body" style="background-color: blueviolet; color: rgb(250, 253, 48);">
+                                    <h6> By- <%= childComments.userID.firstName %></h6>
+                                    <p> <%= childComments.content %></p>
+                                </div>
+                            </div>    
+                        <% }) %>
+                        
+                    <%}%> 
+                <% }) %>
+            </div>
+
+        </div>
+    </div>
+</div>
+<%- include("partials/footerPost") -%>

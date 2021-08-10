@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="row row-header">
+        <div class="col-12">
+            <h1>Welcome <%= name %></h1>    
+        </div>
+    </div>
+    <div class="row row-content">
+        <div class="col-12">
+            <h3>TOTAL POSTS - <%= userData.postID.length%></h3>
+            <h3>YOUR POSTS</h3>
+        </div>
+    </div>
+    <% userData.postID.forEach(function(data){ %>
+        <a href="/posts/<%=data._id%>" style="text-decoration: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"> <%= data.title %></h3>
+                </div>
+            </div>
+        </a>
+    <% }) %>
+</div>
+<%- include('partials/footer') %>

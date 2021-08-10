@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <h1>Login</h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card" id="login">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/login" method="POST">
+            <div class="form-group row">
+              <label class="col-md-2" for="email">Email</label>
+              <input type="email" class="form-control col-md" name="username">
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2" for="password">Password</label>
+              <input type="password" class="form-control col-md" name="password">
+            </div>
+            <button type="submit" class="btn btn-dark">Login</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

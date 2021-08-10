@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">      
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+      <nav class="navbar navbar-dark navbar-expand-md fixed-top">
+        
+          <button class="navbar-toggler" type="button" id="navButton" data-toggle="collapse" data-target="#Navbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="/">FORUM</a>
+          <div class="collapse navbar-collapse" id="Navbar">
+            <ul class="nav navbar-nav mr-auto">
+              <li class="nav-item" id="home"><a class="nav-link" href="/">HOME</a></li>
+              <li class="nav-item" id="about"><a class="nav-link" href="/about">ABOUT</a></li>
+              <li class="nav-item" id="contact"><a class="nav-link" href="/contact">CONTACT</a></li>
+              <li class="nav-item"><a class="nav-link" href="/write">POST QUESTION</a></li>
+              </ul>
+              <div id="logs">
+                <ul class="nav navbar-nav">
+                  <%if (!locals.session.loggedin) { %>
+                    <li class="nav-item"><a class="btn btn-block btn-warning" href="/login" role="button">Login</a></li>
+                    <li class="nav-item"><a class="btn btn-block btn-warning" href="/register" role="button" id="reg">Register</a></li>
+                  <% }else{ %>
+                    <li class="nav-item"> <a class="btn btn-block btn-warning" href="/profile" role="button">Profile</a></li>
+                    <li class="nav-item"> <a class="btn btn-block btn-warning" href="/logout" role="button">Log Out</a></li>
+                  <%}%>    
+                  </ul>  
+              </div>
+          </div>
+        
+      </nav>

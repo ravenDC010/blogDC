@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+<div class="jumbotron">
+    <%= description %>
+</div>
+<div class="container">
+    <div class="row row-header">
+        <div class="col-12">
+            <h3>Hello <%= name %></h3>
+        </div>
+    </div>
+    <div class="row row-content">
+        <div class="col-12 offset-md-2 col-md-8">
+            <form action="/write" method="POST">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <input type="text" class="form-control" name="content">
+                </div>
+                <button type="submit" class="btn btn-dark">Post</button>      
+            </form>
+        </div>
+    </div>
+
+</div>
+<%- include('partials/footer') %>
